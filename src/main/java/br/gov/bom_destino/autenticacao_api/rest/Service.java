@@ -1,4 +1,4 @@
-package br.gov.bom_destino.autenticacao.api.rest;
+package br.gov.bom_destino.autenticacao_api.rest;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
