@@ -3,12 +3,13 @@ package br.gov.bom_destino.autenticacao_api.rest;
 import java.io.Serializable;
 
 import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
+import br.gov.bom_destino.autenticacao_api.entities.Credencial;
 
 @Path("autenticacao")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -19,11 +20,11 @@ public class AutenticacaoResource implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@GET
-	public Response autenticar(@QueryParam("nome-cliente") String nomeAPI) {
+	@POST
+	public Response autenticar(Credencial credencial) {
 		StringBuilder resposta = new StringBuilder();
 		
-		resposta.append(nomeAPI);
+		resposta.append(credencial.getNomeCliente());
 		resposta.append(" ");
 		resposta.append("autenticado");
 			
