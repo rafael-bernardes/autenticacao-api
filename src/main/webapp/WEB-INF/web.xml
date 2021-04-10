@@ -3,6 +3,10 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
+  <context-param>
+		<param-name>resteasy.scan</param-name>
+		<param-value>true</param-value>
+	</context-param>
   <filter>
   	<filter-name>resteasy</filter-name>
   	<filter-class>org.jboss.resteasy.plugins.server.servlet.FilterDispatcher</filter-class>

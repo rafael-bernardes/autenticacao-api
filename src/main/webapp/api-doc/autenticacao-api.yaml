@@ -1,0 +1,47 @@
+openapi: 3.0.0
+info:
+  title: Autenticacao API
+  description: Serviço para autenticacao de clientes de APIs
+  version: 1.0.0
+  contact:
+    email: "rafael.bernardes@live.com"
+servers:
+  - url: http://ec2-52-40-160-195.us-west-2.compute.amazonaws.com:8080/autenticacao-api/
+    description: Servidor na nuvem da AWS
+paths:
+  /autenticacao:
+    post:
+      summary: Autentica um client de API
+      description: Endpoint para autenticar e autorizar um cliente para uma determinada API
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Credenciais do cliente"
+        required: true
+        schema:
+          $ref: "#/definitions/Credencial"
+      responses:
+        '200':
+          description: Autenticado com sucesso
+          content:
+            application/json:
+              type: string
+        '401':
+          description: Nao autorizado
+          content:
+            application/json:
+              type: string
+definitions:
+  Credencial:
+    type: "object"
+    properties:
+      nome:
+        type: "string"
+      token:
+        type: "string"
